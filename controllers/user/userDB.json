@@ -1,0 +1,32 @@
+[
+  {
+    "firstName": "Sarah",
+    "lastName": "Conor",
+    "email": "jane@test.com",
+    "phoneNumber": 805680945,
+    "transactionPin": "$2a$10$FLnwpMLgQPfyr/cCoapZweenwUvciXES7audq5lddBWAFZlA9AXwa",
+    "password": "$2a$10$XwcFKqDcNAMgwXj7jkIiCeXj77jjjKtwLIb1IkhCGD5QBEf/.Wnia",
+    "confirmPassword": "test123",
+    "id": "28192ab0-ecd7-46ed-bf2b-61bf74a4b78e",
+    "accountNumber": 6091155153,
+    "accountBalance": 4400,
+    "isActivated": true,
+    "updatedAtnow": "2021-03-22T15:27:45.544Z",
+    "createdAt": "2021-03-22T15:27:45.544Z"
+  },
+  {
+    "firstName": "john",
+    "lastName": "Conor",
+    "email": "john@test.com",
+    "phoneNumber": 805680945,
+    "transactionPin": "$2a$10$6iKonuSynU8x7YrSz2LPLObjb34TsqvhfLuCxHXaUQID6/kfR1gnO",
+    "password": "$2a$10$Mihc6JZ./kt4AN6IXXa25OH3jc3DL4Cc1C9PgKN9cwyL7f0cy2dZm",
+    "confirmPassword": "test123",
+    "id": "7f0036bd-e676-4fba-bd3c-81fc37162d4a",
+    "accountNumber": 5093702362,
+    "accountBalance": 5600,
+    "isActivated": true,
+    "updatedAtnow": "2021-03-22T15:31:34.172Z",
+    "createdAt": "2021-03-22T15:31:34.172Z"
+  }
+]
