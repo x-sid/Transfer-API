@@ -9,4 +9,4 @@ To run this application
 To run test
 - npm install -g jest
 - npm run test
- For more information refer to [Documentation](https://documenter.getpostman.com/view/11689118/TzCFfptU)
+- For more information refer to [Documentation](https://documenter.getpostman.com/view/11689118/TzCFfptU)
