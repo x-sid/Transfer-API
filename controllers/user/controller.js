@@ -1,5 +1,5 @@
 const { getUserData } = require("./helpers");
-const UserService = require("./services");
+const UserService = require("../../services/userServices");
 
 exports.userSignUp = async (req, res) => {
   try {
@@ -15,13 +15,15 @@ exports.userSignUp = async (req, res) => {
     if (findExist) {
       return res
         .status(400)
-        .json({ success: false, messsage: "User already exists" });
+        .json({ success: false, messsage: "User already exists", data: {} });
     }
 
-    const { success, message } = await UserService.create(userDetails, users);
-    return res.status(201).json({ success, message });
+    const { success, message, data } = await UserService.create(
+      userDetails,
+      users
+    );
+    return res.status(201).json({ success, message, data });
   } catch (error) {
-    console.log(error)
     return res
       .status(500)
       .json({ success: false, messsage: "Someting went wrong" });
@@ -32,7 +34,8 @@ exports.userLogin = async (req, res) => {
   try {
     let loginDetails = req.body;
     loginDetails.email = req.body.email.toLowerCase();
-    const existUsers = await getUserData();
+
+    let existUsers = await getUserData();
 
     const user = await existUsers.find(
       (user) => user.email === loginDetails.email

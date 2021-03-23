@@ -2,13 +2,26 @@ const fs = require("fs");
 const { promisify } = require("util");
 const { v4: uuidv4 } = require("uuid");
 
+
 //get transaction history data from json file
 exports.getTransactionHistory = async () => {
-  const asyncReadFile = promisify(fs.readFile);
-  const jsonData = await asyncReadFile(
-    "./controllers/transaction/transactionDB.json"
-  );
-  return JSON.parse(jsonData);
+  if (process.env.NODE_ENV === "development") {
+    try {
+      const asyncReadFile = promisify(fs.readFile);
+      const jsonData = await asyncReadFile("./database/transactionDB.json");
+      return JSON.parse(jsonData);
+    } catch (error) {
+      return [];
+    }
+  }
+
+  try {
+    const asyncReadFile = promisify(fs.readFile);
+    const jsonData = await asyncReadFile("./tests/transactionDB.json");
+    return JSON.parse(jsonData);
+  } catch (error) {
+    return [];
+  }
 };
 
 exports.performTransaction = async (
@@ -63,11 +76,15 @@ exports.saveTransaction = async (transactionDetails, users) => {
 
   const data = [sendersReciept, recipientReciept];
 
+  if (process.env.NODE_ENV === "development") {
+    const stringifyData = JSON.stringify(data);
+    const asyncWriteFile = promisify(fs.writeFile);
+    await asyncWriteFile("./database/transactionDB.json", stringifyData);
+    return;
+  }
+
   const stringifyData = JSON.stringify(data);
   const asyncWriteFile = promisify(fs.writeFile);
-  await asyncWriteFile(
-    "./controllers/transaction/transactionDB.json",
-    stringifyData
-  );
+  await asyncWriteFile("./tests/transactionDB.json", stringifyData);
   return;
 };

@@ -2,11 +2,12 @@ const {
   performTransaction,
   saveTransaction,
   getTransactionHistory,
-} = require("./helpers");
-const { saveUserData, getUserData } = require("../user/helpers");
+} = require("../controllers/transaction/helpers");
+const { saveUserData, getUserData } = require("../controllers/user/helpers");
 const bcrypt = require("bcryptjs");
 
-module.exports = class transactionService {
+module.exports = class TransactionService {
+
   static async transfer(req) {
     const users = await getUserData();
 
@@ -65,7 +66,7 @@ module.exports = class transactionService {
     await saveTransaction(transactionDetails, { sender, recipient });
 
     transactionDetails.availableBalance = sendersCurrentBalance;
-    return { success: true, message: "Successfull", data: transactionDetails };
+    return { success: true, message: "Success", data: transactionDetails };
   }
 
   static async transactionHistory(req) {

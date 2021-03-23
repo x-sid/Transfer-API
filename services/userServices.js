@@ -1,4 +1,4 @@
-const { saveUserData, generateToken } = require("./helpers");
+const { saveUserData, generateToken } = require("../controllers/user/helpers");
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 
@@ -26,7 +26,7 @@ module.exports = class UserService {
 
     //save the new user data
     await saveUserData(users);
-    return { success: true, message: "User signup successfully" };
+    return { success: true, message: "User signup successfully",data:{accountNumber} };
   }
 
   static async login(loginDetails, user) {
